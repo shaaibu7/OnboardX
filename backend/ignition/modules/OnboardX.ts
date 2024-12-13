@@ -1,20 +1,12 @@
-// This setup uses Hardhat Ignition to manage smart contract deployments.
-// Learn more about it at https://hardhat.org/ignition
-
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
-const JAN_1ST_2030 = 1893456000;
-const ONE_GWEI: bigint = 1_000_000_000n;
+const tokenAddress = "0x9de32bcaA113C1CEF7DC6cCCA438F25A3Ca7bAcD";
 
-const LockModule = buildModule("LockModule", (m) => {
-  const unlockTime = m.getParameter("unlockTime", JAN_1ST_2030);
-  const lockedAmount = m.getParameter("lockedAmount", ONE_GWEI);
+const OnboardXModule = buildModule("OnboardXModule", (m) => {
 
-  const lock = m.contract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
+    const OnboardXStake = m.contract("OnboardX", [tokenAddress]);
 
-  return { lock };
+    return { OnboardXStake };
 });
 
-export default LockModule;
+export default OnboardXModule;
