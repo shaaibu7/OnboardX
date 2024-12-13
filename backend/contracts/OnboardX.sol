@@ -27,6 +27,8 @@ contract OnboardX {
         string role;
         uint32 payment;
         bool active;
+        bool confirmed;
+        bool releaseFunds;
         address employeeAddress;
         EmploymentStatus status;
     }
@@ -67,6 +69,8 @@ contract OnboardX {
             role: role,
             payment: payment,
             active: true,
+            confirmed: false,
+            releaseFunds: false,
             employeeAddress: employeeAddress,
             status: status
         });
@@ -81,9 +85,21 @@ contract OnboardX {
         IERC20(tokenAddress).transfer(msg.sender, amount);
     }
 
+    function confirmTaskCompletion() external onlyEmployee {
+        employees[msg.sender].confirmed = true;
+    }
+
+    function releaseFunds(address _employee) external onlyCompany {
+        employees[_employee].releaseFunds = true;
+    }
+
     // getter functions
-    function getEmployees() external onlyCompany {
-        
+    function getEmployees() external view onlyCompany returns(Employee[] memory employeesDetails) {
+        employeesDetails = companyEmployees[msg.sender];
+    }
+    
+    function getEmployee() external view onlyEmployee returns(Employee memory employeeDetails) {
+        employeeDetails = employees[msg.sender];
     }
     
 }
