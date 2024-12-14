@@ -5,6 +5,7 @@ import PaymentStatus from './components/PaymentStatus'
 import RootPage from './Root'
 import './App.css'
 import LandingPage from './pages/LandingPage'
+import EmployesPage from './pages/EmployesPage'
 
 function App() {
     const router=createBrowserRouter(
@@ -13,6 +14,7 @@ function App() {
             <Route index element={<LandingPage/>} />
             <Route path='register' element={<RegisterUser/>}/>
             <Route path='/onboard'element={<OnBoardPage/>} />
+            <Route path='/employess' element={<EmployesPage/>}/>
             <Route path='/paymentstatus'element={<PaymentStatus/>} />
         </Route>
       )

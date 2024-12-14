@@ -4,10 +4,10 @@ const PaymentStatus = () => {
   return (
     <div className="pt-20 flex items-center justify-center">
       <div className="flex flex-col justify-center w-[60%]">
-        <h2 className="text-3xl underline mb-4 text-blue-400">
+        <h2 className="text-3xl underline mb-4 text-blue-400  font-wix">
           Employment Status
         </h2>
-        <div className="flex flex-row  justify-between">
+        <div className="flex flex-row  justify-between font-montserrat">
           <div>
             <h2 className="text-xl font-bold mb-2">Current Status</h2>
             <p className="text-green-400 font-semibold">Employed</p>
