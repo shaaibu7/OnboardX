@@ -1,0 +1,201 @@
+[
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_tokenAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "confirmTaskCompletion",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getEmployee",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "role",
+              "type": "string"
+            },
+            {
+              "internalType": "uint32",
+              "name": "payment",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bool",
+              "name": "active",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "confirmed",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "releaseFunds",
+              "type": "bool"
+            },
+            {
+              "internalType": "address",
+              "name": "employeeAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "enum OnboardX.EmploymentStatus",
+              "name": "status",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct OnboardX.Employee",
+          "name": "employeeDetails",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getEmployees",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "role",
+              "type": "string"
+            },
+            {
+              "internalType": "uint32",
+              "name": "payment",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bool",
+              "name": "active",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "confirmed",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "releaseFunds",
+              "type": "bool"
+            },
+            {
+              "internalType": "address",
+              "name": "employeeAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "enum OnboardX.EmploymentStatus",
+              "name": "status",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct OnboardX.Employee[]",
+          "name": "employeesDetails",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "role",
+          "type": "string"
+        },
+        {
+          "internalType": "uint32",
+          "name": "payment",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "employeeAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "enum OnboardX.EmploymentStatus",
+          "name": "status",
+          "type": "uint8"
+        }
+      ],
+      "name": "onboardEmployee",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "reg_no",
+          "type": "string"
+        }
+      ],
+      "name": "registerCompany",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_employee",
+          "type": "address"
+        }
+      ],
+      "name": "releaseFunds",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "requestPayment",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
