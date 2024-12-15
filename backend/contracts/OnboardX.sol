@@ -36,6 +36,7 @@ contract OnboardX {
     mapping (address => Company) companies;
     mapping (address => Employee[]) companyEmployees;
     mapping (address => Employee) employees;
+    mapping (address => Company[]) getAllCompanies;
 
     modifier onlyCompany {
         require(companies[msg.sender].active == true, "Only active company can onboard employee");
@@ -47,6 +48,11 @@ contract OnboardX {
         _;
     }
 
+    modifier onlyOwner {
+        require(msg.sender == owner, "Only the admin can call this function");
+        _;
+    }
+
     function registerCompany(string memory name, string memory reg_no) external {
         Company memory company = Company({
             name: name,
@@ -55,6 +61,7 @@ contract OnboardX {
         });
 
         companies[msg.sender] = company;
+        getAllCompanies[owner].push(company);
     }
 
     function onboardEmployee(
@@ -100,6 +107,10 @@ contract OnboardX {
     
     function getEmployee() external view onlyEmployee returns(Employee memory employeeDetails) {
         employeeDetails = employees[msg.sender];
+    }
+
+    function getAllCompaniesData() external view onlyOwner returns(Company[] memory companyDetails) {
+        companyDetails = getAllCompanies[owner];
     }
     
 }
