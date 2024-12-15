@@ -64,9 +64,9 @@
               "type": "string"
             },
             {
-              "internalType": "uint32",
+              "internalType": "uint256",
               "name": "payment",
-              "type": "uint32"
+              "type": "uint256"
             },
             {
               "internalType": "bool",
@@ -119,9 +119,9 @@
               "type": "string"
             },
             {
-              "internalType": "uint32",
+              "internalType": "uint256",
               "name": "payment",
-              "type": "uint32"
+              "type": "uint256"
             },
             {
               "internalType": "bool",
@@ -170,9 +170,9 @@
           "type": "string"
         },
         {
-          "internalType": "uint32",
+          "internalType": "uint256",
           "name": "payment",
-          "type": "uint32"
+          "type": "uint256"
         },
         {
           "internalType": "address",
