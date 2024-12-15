@@ -37,19 +37,22 @@ const useOnboardEmployee = () => {
             }
 
             try {
+
+                const parsedPayment = parseUnits(payment.toString(), 18);
+                const parsedStatus = BigInt(status);
                 const estimatedGas = await contract.onboardEmployee.estimateGas(
                     name,
                     role,
-                    BigInt(payment),
+                    parsedPayment,
                     employeeAddress,
-                    BigInt(status)
+                    parsedStatus
                 );
                 const tx = await contract.onboardEmployee(
                     name,
                     role,
-                    BigInt(payment),
+                    parsedPayment,
                     employeeAddress,
-                    BigInt(status),
+                    parsedStatus,
                     {
                         gasLimit: (estimatedGas * BigInt(120)) / BigInt(100),
                     }
