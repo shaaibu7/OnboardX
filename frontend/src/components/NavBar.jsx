@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from "../assets/pngwing.com.png"
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import '../connection'
 
 const NavBar = () => {
@@ -40,6 +42,7 @@ const NavBar = () => {
         </ul>
       </div>
     </div>
+    <ToastContainer />
   </nav>
   
   )
