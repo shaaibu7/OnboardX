@@ -15,7 +15,7 @@ contract OnboardX {
         tokenAddress = _tokenAddress;
     }
     // Data structure
-    enum EmploymentStatus { parttime, fulltime, contract_type }
+    enum EmploymentStatus { parttime, fulltime }
     struct Company {
         string name;
         string reg_no;
@@ -54,6 +54,7 @@ contract OnboardX {
     }
 
     function registerCompany(string memory name, string memory reg_no) external {
+        require(companies[msg.sender].active != true, "Cannot onbaord company twice");
         Company memory company = Company({
             name: name,
             reg_no: reg_no,
@@ -81,6 +82,9 @@ contract OnboardX {
             employeeAddress: employeeAddress,
             status: status
         });
+
+        IERC20(tokenAddress).approve(address(this), payment);
+        IERC20(tokenAddress).transferFrom(msg.sender, address(this), payment);
 
         companyEmployees[msg.sender].push(employee);
         employees[employeeAddress] = employee;
