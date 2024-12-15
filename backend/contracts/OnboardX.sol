@@ -25,7 +25,7 @@ contract OnboardX {
     struct Employee {
         string name;
         string role;
-        uint32 payment;
+        uint256 payment;
         bool active;
         bool confirmed;
         bool releaseFunds;
@@ -68,7 +68,7 @@ contract OnboardX {
     function onboardEmployee(
         string memory name,
         string memory role,
-        uint32 payment,
+        uint256 payment,
         address employeeAddress,
         EmploymentStatus status
     ) external onlyCompany {
@@ -92,7 +92,7 @@ contract OnboardX {
 
 
     function requestPayment() external onlyEmployee {
-        uint32 amount = employees[msg.sender].payment;
+        uint256 amount = employees[msg.sender].payment;
         IERC20(tokenAddress).transfer(msg.sender, amount);
     }
 
