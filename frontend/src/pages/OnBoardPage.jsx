@@ -6,9 +6,9 @@ const OnBoardPage = () => {
   return (
     <div className="relative  bg-[url('/home/james/OnboardX/frontend/src/assets/3394893.jpg')] bg-cover w-full h-screen">
       <div className="pt-24 absolute inset-0 bg-black/30 backdrop-blur-none px-3 md:px-0">
-          <form className="max-w-sm mx-auto">
-            <h2 className="text-center text-2xl mb-5">Employee Onboarding</h2>
-            <div>
+          <form className="max-w-sm mx-auto pb-5">
+            <h2 className="text-center text-4xl mb-3 font-wix underline">Employee Onboarding</h2>
+            <div className="bg-white p-4 rounded-md font-montserrat">
               <div className="mb-5">
                 <label
                   htmlFor="company name"
@@ -29,7 +29,7 @@ const OnBoardPage = () => {
                   htmlFor="company name"
                   className="block mb-2 text-lg font-medium text-gray-900 dark:text-black"
                 >
-                  Role/Position
+                  Role/Position :
                 </label>
                 <input
                   type="text"
@@ -44,7 +44,7 @@ const OnBoardPage = () => {
                   htmlFor="wallet address"
                   className="block mb-2 text-lg font-medium text-gray-900 dark:text-black"
                 >
-                  Wallet Address
+                  Wallet Address :
                 </label>
                 <input
                   type="text"
@@ -59,7 +59,7 @@ const OnBoardPage = () => {
                   htmlFor="company name"
                   className="block mb-2 text-lg font-medium text-gray-900 dark:text-black"
                 >
-                  Payment amount
+                  Payment amount :
                 </label>
                 <input
                   type="number"
@@ -74,7 +74,7 @@ const OnBoardPage = () => {
                   htmlFor="company name"
                   className="block mb-2 text-lg font-medium text-gray-900 dark:text-black"
                 >
-                  Status
+                  Status :
                 </label>
                 <select
                   className="w-full outline-none py-3 px-2 rounded"
