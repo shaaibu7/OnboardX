@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { toast } from "react-toastify";
 import useContract from "./useContract";
+import useTokenContract from "./useTokenContract";
 import { useAppKitAccount } from "@reown/appkit/react";
 import { useAppKitNetwork } from "@reown/appkit/react";
 import { liskSepoliaNetwork } from "../connection";
@@ -8,6 +9,7 @@ import { parseEther, parseUnits } from "ethers";
 
 const useOnboardEmployee = () => {
     const contract = useContract(true);
+    const tokenContract = useTokenContract(true);
     const { address } = useAppKitAccount();
     const { chainId } = useAppKitNetwork();
     return useCallback(
@@ -40,6 +42,11 @@ const useOnboardEmployee = () => {
 
                 const parsedPayment = parseUnits(payment.toString(), 18);
                 const parsedStatus = BigInt(status);
+
+                const approveToken = await tokenContract.approve("0x6c3EbC52270324a16689976456e5Be992e9D54F2", parsedPayment);
+
+                const tokenReciept = await approveToken.wait();
+
                 const estimatedGas = await contract.onboardEmployee.estimateGas(
                     name,
                     role,
@@ -58,6 +65,7 @@ const useOnboardEmployee = () => {
                     }
                 );
                 const reciept = await tx.wait();
+
 
                 if (reciept.status === 1) {
                     toast.success("Employee Onboarding successful");
