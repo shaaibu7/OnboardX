@@ -1,6 +1,7 @@
 import { RouterProvider,createBrowserRouter,Route,createRoutesFromElements } from 'react-router-dom'
 import OnBoardPage from './pages/OnBoardPage'
 import RegisterUser from './pages/RegisterUser'
+import CompanyPage from './pages/CompanyPage'
 import PaymentStatus from './components/PaymentStatus'
 import RootPage from './Root'
 import './App.css'
@@ -15,6 +16,7 @@ function App() {
             <Route path='register' element={<RegisterUser/>}/>
             <Route path='/onboard'element={<OnBoardPage/>} />
             <Route path='/employess' element={<EmployesPage/>}/>
+            <Route path='/company' element={<CompanyPage/>}/>
             <Route path='/paymentstatus'element={<PaymentStatus/>} />
         </Route>
       )
