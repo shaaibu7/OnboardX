@@ -83,7 +83,7 @@ contract OnboardX {
             status: status
         });
 
-        IERC20(tokenAddress).approve(address(this), payment);
+        // IERC20(tokenAddress).approve(address(this), payment);
         IERC20(tokenAddress).transferFrom(msg.sender, address(this), payment);
 
         companyEmployees[msg.sender].push(employee);
