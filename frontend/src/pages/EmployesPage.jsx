@@ -1,64 +1,75 @@
 import React from 'react'
+import useContract from '../hooks/useContract'
+import { useCallback, useEffect, useState } from 'react'
 
 const EmployesPage = () => {
+  const readOnlyOnboardContract = useContract(true);
+  const [employees, setEmployee] = useState([]);
+
+  const fetchEmployees = useCallback(async () => {
+    if(!readOnlyOnboardContract) return;
+    console.log("provider: ", readOnlyOnboardContract.runner);
+
+    try {
+      const data = await readOnlyOnboardContract.getEmployees();
+      const result = await data.toArray();
+      setEmployee(data);
+
+      console.log("This is the proxy object", data);
+      console.log("This is the state data", employees);
+      
+     
+
+      
+
+    } catch (error) {
+      console.log("error fetching employees: ", error);
+    }
+  }, [readOnlyOnboardContract]);
+
+  useEffect(() => {
+    fetchEmployees();
+  }, [fetchEmployees]);
+ 
   return (
     <div className='pt-20 px-8'>
         <h2 className='font-wix text-3xl underline my-5'>Onboarded Employees</h2>
-        <table
+        {employees.length === 0 ? (
+          <p className="text-white text-center">No Employees available</p>
+        ) : (
+          <table
             class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 font-montserrat"
           >
             <thead
               class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
             >
               <tr>
-                <th scope="col" class="px-6 py-3 text-white md:text-base">Wallet address</th>
-                <th scope="col" class="px-6 py-3 text-white md:text-base">Status</th>
+                <th scope="col" class="px-6 py-3 text-white md:text-base">Name</th>
                 <th scope="col" class="px-6 py-3 text-white md:text-base">Role</th>
-                <th scope="col" class="px-6 py-3 text-white md:text-base">Payment</th>
+                <th scope="col" class="px-6 py-3 text-white md:text-base">Address</th>
               </tr>
             </thead>
             <tbody class="ta" id="bookingTable">
-              <tr class="bg-white border-b text-black dark:border-gray-700">
-                <th
-                  scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                 0xAb5801A7D398351b8bE11C439e05C5B3259aec9B
-                </th>
-                <td class="px-6 py-4">Employed</td>
-                <td class="px-6 py-4">FullTime</td>
-                <td class="px-6 py-4 text-red-600 font-semibold">Pending</td>
-                
-              </tr>
-
-              <tr class="bg-white border-b text-black dark:border-gray-700">
-                <th
-                  scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                 0xAb5801A7D398351b8bE11C439e05C5B3259aec9B
-                </th>
-                <td class="px-6 py-4">Employed</td>
-                <td class="px-6 py-4">PartTime</td>
-                <td class="px-6 py-4 text-green-500 font-semibold">Paid</td>
-                
-              </tr>
-
-              <tr class="bg-white border-b text-black dark:border-gray-700">
-                <th
+              
+              {
+                employees.map((employee, index) => (
+                  <tr class="bg-white border-b text-black dark:border-gray-700" key={index}>
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                  >
+                  {employee.name}
+                  </th>
+                  <td class="px-6 py-4">{employee.role}</td>
+                  <td class="px-6 py-4">{employee.employeeAddress}</td>
                   
-                  scope="row"
-                  class=" px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                 0xAb5801A7D398351b8bE11C439e05C5B3259aec9B
-                </th>
-                <td class="px-6 py-4 text-red-400">Fired</td>
-                <td class="px-6 py-4">PartTime</td>
-                <td class="px-6 py-4 text-green-500 font-semibold">Paid</td>
-                
-              </tr>
+                </tr>
+                ))
+              }
+
             </tbody>
           </table>
+        )}
     </div>
   )
 }
