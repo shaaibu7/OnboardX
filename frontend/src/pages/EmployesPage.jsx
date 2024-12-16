@@ -14,12 +14,6 @@ const EmployesPage = () => {
       const data = await readOnlyOnboardContract.getEmployees();
       const result = await data.toArray();
       setEmployee(data);
-
-      console.log("This is the proxy object", data);
-      console.log("This is the state data", employees);
-      
-     
-
       
 
     } catch (error) {

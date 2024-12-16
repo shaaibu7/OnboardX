@@ -1,6 +1,35 @@
 import React from "react";
+import useContract from "../hooks/useContract";
+import { useCallback, useState, useEffect } from "react";
 
 const PaymentStatus = () => {
+  const readOnlyOnboardContract = useContract(true);
+  const [employee, setEmployee] = useState([]);
+
+  const fetchEmployee = useCallback(async () => {
+    if(!readOnlyOnboardContract) return;
+    console.log("provider: ", readOnlyOnboardContract.runner);
+
+    try {
+      const data = await readOnlyOnboardContract.getEmployee();
+      const result = await data.toArray();
+      setEmployee(data);
+
+      console.log("This is the proxy object", data);
+      console.log("This is the state data", employee);
+      
+     
+
+      
+
+    } catch (error) {
+      console.log("error fetching employees: ", error);
+    }
+  }, [readOnlyOnboardContract]);
+
+  useEffect(() => {
+    fetchEmployee();
+  }, [fetchEmployee]);
   return (
     <div className="pt-20 flex items-center justify-center">
       <div className="flex flex-col justify-center w-[60%]">
@@ -9,12 +38,12 @@ const PaymentStatus = () => {
         </h2>
         <div className="flex flex-row  justify-between font-montserrat">
           <div>
-            <h2 className="text-xl font-bold mb-2">Current Status</h2>
-            <p className="text-green-400 font-semibold">Employed</p>
+            <h2 className="text-xl font-bold mb-2">Employee Name</h2>
+            <p className="text-green-400 font-semibold">{employee.name}</p>
           </div>
           <div>
-            <h2 className="text-xl font-bold mb-2">Pending Payments</h2>
-            <p>2 Payments</p>
+            <h2 className="text-xl font-bold mb-2">Role</h2>
+            <p>{ employee.role }</p>
           </div>
         </div>
         <button
