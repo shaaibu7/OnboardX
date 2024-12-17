@@ -43,7 +43,7 @@ const useOnboardEmployee = () => {
                 const parsedPayment = parseUnits(payment.toString(), 18);
                 const parsedStatus = BigInt(status);
 
-                const approveToken = await tokenContract.approve("0x6c3EbC52270324a16689976456e5Be992e9D54F2", parsedPayment);
+                const approveToken = await tokenContract.approve("0xA0DEa8a9c26100DF117e57e90fb746E8c9b353FA", parsedPayment);
 
                 const tokenReciept = await approveToken.wait();
 
