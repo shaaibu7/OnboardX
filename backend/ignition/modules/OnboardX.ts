@@ -1,6 +1,6 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
-const tokenAddress = "0x9de32bcaA113C1CEF7DC6cCCA438F25A3Ca7bAcD";
+const tokenAddress = "0xd0c0E152Ca4d821b37Cbf481f881422cD95D0647";
 
 const OnboardXModule = buildModule("OnboardXModule", (m) => {
 
