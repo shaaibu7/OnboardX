@@ -1,5 +1,5 @@
-import { JsonRpcApiProvider } from "ethers";
+import { JsonRpcProvider } from "ethers";
 
 export const jsonRpcProvider = new JsonRpcProvider(
-    import.meta.env.VITE_BASE_SEPOLIA_RPC_URL
+    import.meta.env.VITE_LISK_SEPOLIA_RPC_URL
 );
