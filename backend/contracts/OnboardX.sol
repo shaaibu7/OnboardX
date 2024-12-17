@@ -83,8 +83,11 @@ contract OnboardX {
             status: status
         });
 
-        // IERC20(tokenAddress).approve(address(this), payment);
-        // IERC20(tokenAddress).transferFrom(msg.sender, address(this), payment);
+        uint256 allowance = IERC20(tokenAddress).allowance(msg.sender, address(this));
+        require(allowance == payment, "No allowance to spend funds at the moment");
+        IERC20(tokenAddress).transferFrom(msg.sender, address(this), payment);
+        
+        
 
         companyEmployees[msg.sender].push(employee);
         employees[employeeAddress] = employee;
