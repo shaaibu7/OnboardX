@@ -47,7 +47,9 @@ const useOnboardEmployee = () => {
                 const parsedPayment = parseUnits(payment.toString(), 18);
                 const parsedStatus = BigInt(status);
 
-                const approveToken = await tokenContract.approve("0xA0DEa8a9c26100DF117e57e90fb746E8c9b353FA", parsedPayment);
+                const spenderAddress = import.meta.env.VITE_CONTRACT_ADDRESS;
+
+                const approveToken = await tokenContract.approve(spenderAddress, parsedPayment);
 
                 const tokenReciept = await approveToken.wait();
 
