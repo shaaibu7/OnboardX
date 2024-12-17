@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import useCreateCompany from "../hooks/useCreateCompany";
+import { ColorRing } from "react-loader-spinner";
+import { useContext } from "react";
+import ContextApi from "../context/ContextApi";
 
 const UserRegestration = () => {
+  const {registerLoading}=useContext(ContextApi);
   const handleCreateCompany = useCreateCompany();
   const [company, setCompany] = useState({
     name: "",
@@ -19,7 +23,7 @@ const UserRegestration = () => {
       <h2 className="text-center text-white font-bold  text-4xl mb-5">
         Company Registration
       </h2>
-      <form className="max-w-sm mx-auto">
+      <form className="relative max-w-sm mx-auto">
           <div>
             <div className="mb-5">
               <label
@@ -72,6 +76,17 @@ const UserRegestration = () => {
               Register Company
             </button>
           </div>   
+          {registerLoading && <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center">
+          <ColorRing
+                visible={true}
+                height="80"
+                width="80"
+                ariaLabel="color-ring-loading"
+                wrapperStyle={{}}
+                wrapperClass="color-ring-wrapper"
+                colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+              />
+          </div>}
       </form>
     </div>
   );

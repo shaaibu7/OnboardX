@@ -5,7 +5,7 @@ const RootPage = () => {
     
   return (
     <div>
-        <NavBar/>
+      <NavBar/>
       <Outlet/>
       <Footer/>
     </div>

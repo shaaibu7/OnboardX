@@ -2,13 +2,13 @@ import { RouterProvider,createBrowserRouter,Route,createRoutesFromElements } fro
 import OnBoardPage from './pages/OnBoardPage'
 import RegisterUser from './pages/RegisterUser'
 import CompanyPage from './pages/CompanyPage'
-import PaymentStatus from './components/PaymentStatus'
+// import PaymentStatus from './components/PaymentStatus'
 import VerifyPayment from './pages/VerifyPayment'
 import RootPage from './Root'
 import './App.css'
 import LandingPage from './pages/LandingPage'
 import EmployesPage from './pages/EmployesPage'
-import ContextApi from './context/ContextApi'
+
 import { ContextApiProvider } from './context/ContextApi'
 
 function App() {
@@ -27,9 +27,9 @@ function App() {
     )
 
   return (
-    // <ContextApiProvider>
+    <ContextApiProvider>
         <RouterProvider router={router}/>
-    // </ContextApiProvider>
+    </ContextApiProvider>
    
   )
 }
