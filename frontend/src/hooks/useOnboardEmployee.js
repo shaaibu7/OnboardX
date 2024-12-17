@@ -10,7 +10,7 @@ import { useContext } from "react";
 import ContextApi from "../context/ContextApi";
 
 const useOnboardEmployee = () => {
-    const { setIsloading}=useContext(ContextApi)
+    // const { setIsloading}=useContext(ContextApi)
     const contract = useContract(true);
     const tokenContract = useTokenContract(true);
     const { address } = useAppKitAccount();
@@ -42,7 +42,7 @@ const useOnboardEmployee = () => {
             }
 
             try {
-                setIsloading(true)
+                // setIsloading(true)
 
                 const parsedPayment = parseUnits(payment.toString(), 18);
                 const parsedStatus = BigInt(status);
@@ -70,7 +70,7 @@ const useOnboardEmployee = () => {
                 );
                 const reciept = await tx.wait();
 
-                setIsloading(false)
+                // setIsloading(false)
                 if (reciept.status === 1) {
                     toast.success("Employee Onboarding successful");
                     return;
@@ -78,11 +78,11 @@ const useOnboardEmployee = () => {
                 toast.error("Employee Onboarding failed");
                 return;
             } catch (error) {
-                setIsloading(false)
+                // setIsloading(false)
                 console.trace(error)
                 console.error("error while onboarding employee: ", error);
                 toast.error("Onboarding employee errored");
-                setIsloading(false)
+                // setIsloading(false)
             }
         },
         [address, chainId, contract]

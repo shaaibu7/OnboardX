@@ -27,9 +27,9 @@ function App() {
     )
 
   return (
-    <ContextApiProvider>
+    // <ContextApiProvider>
         <RouterProvider router={router}/>
-    </ContextApiProvider>
+    // </ContextApiProvider>
    
   )
 }

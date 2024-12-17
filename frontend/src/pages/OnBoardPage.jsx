@@ -5,7 +5,7 @@ import { useContext } from "react";
 import ContextApi from "../context/ContextApi";
 
 const OnBoardPage = () => {
-  const { isLoading } = useContext(ContextApi);
+  // const { isLoading } = useContext(ContextApi);
   const handleOnboardEmployee = useOnboardEmployee();
   const initialState = {
     name: "",
@@ -139,14 +139,14 @@ const OnBoardPage = () => {
                   employeeAddress,
                   status
                 );
-                setEmployee(initialState);
+                // setEmployee(initialState);
               }}
             >
               OnBoard Employee
             </button>
           </div>
 
-          {isLoading && (
+          {/* {isLoading && (
             <div className="w-full absolute top-0  left-0 right-0  flex items-center justify-center bottom-0 h-full ">
               <ColorRing
                 visible={true}
@@ -158,7 +158,7 @@ const OnBoardPage = () => {
                 colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
               />
             </div>
-          )}
+          )} */}
         </form>
       </div>
     </div>
