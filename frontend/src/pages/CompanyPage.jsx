@@ -28,7 +28,7 @@ const CompanyPage = () => {
   }, [fetchCompany]);
  
   return (
-    <div className='pt-20 px-8'>
+    <div className='pt-20 px-8 h-screen'>
         <h2 className='font-wix text-3xl underline my-5'>Registered Companies</h2>
         {company.length === 0 ? (
           <p className="text-white text-center">No Registered Companies</p>

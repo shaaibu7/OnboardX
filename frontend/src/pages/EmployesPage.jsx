@@ -26,7 +26,7 @@ const EmployesPage = () => {
   }, [fetchEmployees]);
  
   return (
-    <div className='pt-20 px-8'>
+    <div className='pt-20 px-8 h-screen'>
         <h2 className='font-wix text-3xl underline my-5'>Onboarded Employees</h2>
         {employees.length === 0 ? (
           <p className="text-white text-center">No Employees available</p>

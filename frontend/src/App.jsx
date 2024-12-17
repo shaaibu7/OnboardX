@@ -3,10 +3,13 @@ import OnBoardPage from './pages/OnBoardPage'
 import RegisterUser from './pages/RegisterUser'
 import CompanyPage from './pages/CompanyPage'
 import PaymentStatus from './components/PaymentStatus'
+import VerifyPayment from './pages/VerifyPayment'
 import RootPage from './Root'
 import './App.css'
 import LandingPage from './pages/LandingPage'
 import EmployesPage from './pages/EmployesPage'
+import ContextApi from './context/ContextApi'
+import { ContextApiProvider } from './context/ContextApi'
 
 function App() {
     const router=createBrowserRouter(
@@ -17,15 +20,17 @@ function App() {
             <Route path='/onboard'element={<OnBoardPage/>} />
             <Route path='/employess' element={<EmployesPage/>}/>
             <Route path='/company' element={<CompanyPage/>}/>
-            <Route path='/paymentstatus'element={<PaymentStatus/>} />
+            {/* <Route path='/paymentstatus' element={<PaymentStatus/>} /> */}
+            <Route path='/verifypayment' element={<VerifyPayment/>}/>
         </Route>
       )
     )
 
   return (
-    <RouterProvider router={router}>
-
-    </RouterProvider>
+    <ContextApiProvider>
+        <RouterProvider router={router}/>
+    </ContextApiProvider>
+   
   )
 }
 
